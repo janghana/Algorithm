@@ -6,21 +6,32 @@ MAX_V = 100
 INF = sys.maxsize
 
 N = 6
-capacity = [[0] * (N + 1) for _ in range(N + 1)]
-flow = [[0] * (N + 1) for _ in range(N + 1)]
-# flowList = [[] for _ in range(N + 1)]
+MAX = 52
+capacity = [[0] * MAX_V for _ in range(MAX)]
+flow = [[0] * MAX_V for _ in range(MAX)]
 flowdict = {}
 
-start_node = 1
+def fromCtoI(target_node):
+    if target_node.isdigit():
+        return int(target_node)
+    else:
+        if target_node.isupper():
+            return ord(target_node) - ord('A')
+        else:
+            return ord(target_node) - ord('a') + 26
+
+
+
+start_node = fromCtoI("A")
 # start one
-end_node = 6
+end_node = fromCtoI("Z")
 # end one
 
 input_num = int(sys.stdin.readline())
-for _ in range(input_num) :
-    S, T, c = map(str, sys.stdin.readline().split())
-    S = int(S)
-    T = int(T)
+for _ in range(input_num):
+    S, T, c = sys.stdin.readline().rstrip().split()
+    S = fromCtoI(S)
+    T = fromCtoI(T)
     c = int(c)
     capacity[S][T] = c
     # capacity[dv][sv] = int(c)
@@ -35,13 +46,6 @@ for _ in range(input_num) :
     else:
         flowdict[T].append(S)
 
-def formCtoI(target_node):
-    if target_node.isupper():
-        return ord(target_node) - ord('A')
-    else:
-        return ord(target_node) - ord('a') + 26
-
-
 def BFS(start_node, end_node, visit):
     dq = deque()
     dq.append(start_node)
@@ -53,15 +57,12 @@ def BFS(start_node, end_node, visit):
             if capacity[S][T] - flow[S][T] > 0 and visit[T] == -1:
                 dq.append(T)
                 visit[T] = S
-
                 if T == end_node:
                     break
-
     if visit[end_node] == -1:
         return True
     else:
         return False
-
 def edmonds_Karp(start_node, end_node):
     while 1:
         visit = [-1 for i in range(MAX_V)]
