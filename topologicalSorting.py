@@ -28,8 +28,7 @@ def topologicalSorting(height_students):
                 data_queue.append(i)
     for i in result:
         print(i, end=" ")
-
-
+        
 topologicalSorting(height_students)
 
 
