@@ -87,6 +87,14 @@ def edmonds_Karp(start_node, end_node):
 
     return totalFlow
 
+
+# 여기서, BFS를 start, end, visit를 parameter로 넘겨 줍니다.
+#
+# BFS에서 너비 우선 탐색을 통하여 visit에 - 1이 남아있다면 해당 end_node에 도달하지 못 한 것이므로 무한 루프를 탈출하여 totalFlow를 리턴하며 edmonds_karps를 끝내줍니다.
+#
+# 그러나, 위 예시의 경우에는 처음에는 도달하므로, BFS는 True를 반환합니다.
+# minFlow에 가장 큰 값을 넣어두고, end_node부터 start_node까지 살피며 가장 작도록 만드는 값을 넣어줍니다.
+
 print(edmonds_Karp(start_node, end_node))
 
 # arr = [[1, 2, 12], [1, 4, 11], [2, 3, 6], [2, 4, 3], [2, 5, 5],
