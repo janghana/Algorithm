@@ -7,7 +7,7 @@ weight_bag = [[0,0]]
 for _ in range(N):
     W, V = map(int, sys.stdin.readline().split())
     weight_bag.append([W,V])
-# print(weight_bag)
+
 for i in range(1, N+1):
     for j in range(1, K+1):
         weight = weight_bag[i][0]
@@ -16,7 +16,6 @@ for i in range(1, N+1):
             d[i][j] = d[i-1][j]
         else:
             d[i][j] = max(d[i-1][j], d[i-1][j-weight]+value)
-    # print(d)
 
 print(d[N][K])
 '''
