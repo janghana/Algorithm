@@ -1,15 +1,17 @@
-default_cost, factory_cost, product_cost = map(int, input().split())
+input()
+num_list = list(map(int ,input().split()))
 
 cnt = 0
-if factory_cost >= product_cost:
-    print(-1)
-else:
-    while True:
-        cnt += 10000
-        if default_cost + factory_cost * cnt < product_cost * cnt:
-            break
-    while True:
-        cnt -= 1
-        if default_cost + factory_cost * cnt >= product_cost * cnt:
-            break
-    print(cnt+1)
+for i in num_list:
+    if i == 1:
+        continue
+    if i == 2 or i == 3:
+        cnt += 1
+        continue
+    nTrue = True
+    for j in range(2,i):
+        if i % j == 0:
+            nTrue = False
+    if nTrue:
+        cnt += 1
+print(cnt)
