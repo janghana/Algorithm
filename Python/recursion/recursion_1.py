@@ -1,6 +1,9 @@
-src = []
-for _ in range(int(input())):
-    src.append(int(input()))
+N = int(input())
 
-for i in sorted(src):
-    print(i)
+def factorial(N):
+    if N == 0:
+        return 1
+    if N == 1:
+        return 1
+    return N * factorial(N-1)
+print(factorial(N))
