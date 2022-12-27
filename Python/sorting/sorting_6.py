@@ -1,10 +1,23 @@
+from collections import Counter
 import sys
 N = int(input())
-src = [0] * 10001
-
+src = []
 for _ in range(N):
-    src[int(sys.stdin.readline())] += 1
-for i in range(len(src)):
-    if src[i] != 0:
-        for j in range(src[i]):
-            print(i)
+    src.append(int(sys.stdin.readline()))
+
+middle_val_index = N // 2
+src.sort()
+
+C_src = Counter(src).most_common(2)
+num = 0
+if N == 1:
+    num = src[0]
+else:
+    if C_src[0][1] == C_src[1][1]:
+        num = C_src[1][0]
+    else:
+        num = C_src[0][0]
+print(round(sum(src)/N))
+print(src[middle_val_index])
+print(num)
+print(src[N-1] - src[0])
