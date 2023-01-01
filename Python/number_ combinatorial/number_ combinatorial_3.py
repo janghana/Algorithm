@@ -12,5 +12,5 @@ def GCD_DP(a,b):
 def LCM(a,b):
     return (a*b) // GCD_DP(a,b)
 
-print(GCD1(a,b))
+print(GCD_DP(a,b))
 print(LCM(a,b))
