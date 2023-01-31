@@ -1,11 +1,7 @@
-from itertools import permutations
-nanj = []
-res = []
-for _ in range(9):
-    nanj.append(int(input()))
-N = permutations(nanj,7)
-for i in N:
-    if sum(i) == 100:
-        for j in sorted(i):
-            print(j)
+while True:
+    S = list(map(str, input().split()))
+    find = S[0]
+    target = S[1:]
+    if find == '#':
         break
+    print(find, str(target).lower().count(find))
