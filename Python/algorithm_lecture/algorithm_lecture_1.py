@@ -1,9 +1,8 @@
-N = int(input())
-
-def factorial(N):
-    if N == 0:
-        return 1
-    if N == 1:
-        return 1
-    return N * factorial(N-1)
-print(factorial(N))
+print(1)
+print(0)
+'''
+MenOfPassion(A[], n) {
+    i = ⌊n / 2⌋;
+    return A[i]; # 코드1
+}
+'''
