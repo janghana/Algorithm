@@ -25,5 +25,3 @@ if nTrue:
         print(result[i], end='')
 else:
     print(-1)
-
-
