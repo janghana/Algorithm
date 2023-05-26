@@ -17,4 +17,3 @@ for _ in range(100):
         break
     else:
         print(S, "is surprising.")
-
