@@ -1,16 +1,42 @@
-max = -100000
-cnt = 0
-info = [0, 0]
-for i in range(9):
-    list_9 = list(map(int, input().split()))
-    cnt += 1
-    count = 1
-    for j in list_9:
-        if max < j:
-            max = j
-            info[0] = cnt
-            info[1] = count
-        count += 1
+from collections import deque
+import sys
 
-print(max)
-print(info[0], info[1])
+r = sys.stdin.readline
+
+N, M = map(int, r().split())
+
+array = [[] for _ in range(N + 1)]
+
+
+def bfs(v):
+    q = deque([v])
+    visited = [False] * (N + 1)
+    visited[v] = True
+    cnt = 1
+    while q:
+        v = q.popleft()
+        for node in array[v]:
+            if not visited[node]:
+                q.append(node)
+                visited[node] = True
+                cnt += 1
+
+    return cnt
+
+
+for _ in range(M):
+    a, b = map(int, r().split())
+    array[b].append(a)
+
+results = []
+max_value = -1
+for i in range(1, N + 1):
+    result = bfs(i)
+    if result > max_value:
+        results = [i]
+        max_value = result
+    elif result == max_value:
+        results.append(i)
+
+for re in results:
+    print(re, end=" ")
