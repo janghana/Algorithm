@@ -1,24 +1,40 @@
-N, K = map(int, input().split())
-medals = []
-for _ in range(N):
-    medals.append(list(map(int, input().split())))
+'''
+typing study methods
 
-medals.sort(key=lambda x: (x[1], x[2], x[3]), reverse=True)
+-> stack
 
-target_index = [medals[i][0] for i in range(N)].index(K)
+push X -> 정수 X를 스택에 넣는 연산.
+pop -> 스택에서 가자 위 정수 빼고 그 수 출력. 없으면 -1
+size -> 스택에 들어있는 정수 개수 출력
+empty -> 스택 비어있으면 1, 아니면 0
+top -> 스택 가장 위 정수 출력. 없으면 -1
 
+'''
+
+import sys
+
+input = sys.stdin.readline
+
+stack = []
+N = int(input())
 for i in range(N):
-    if medals[target_index][1:] == medals[i][1:]:
-        print(i + 1)
-        break
-
-'''
-1. 금메달 수가 더 많은 나라
-2. 금메달 수가 같으면, 은메달 수가 더 많은 나라
-3. 금, 은메달 수가 모두 같으면, 동메달 수가 더 많은 나라
-
-N -> 각 국가
-한 국가의 등수 -> 자신보다 더 잘한 나라 수 + 1
-금은동 모두 같으면 같은 등수.
-
-'''
+    command = input().split()
+    if command[0] == 'push':
+        stack.append(command[1])
+    elif command[0] == 'top':
+        if stack:
+            print(stack[-1])
+        else:
+            print(-1)
+    elif command[0] == 'size':
+        print(len(stack))
+    elif command[0] == 'empty':
+        if stack:
+            print(0)
+        else:
+            print(1)
+    elif command[0] == 'pop':
+        if stack:
+            print(stack.pop())
+        else:
+            print(-1)
